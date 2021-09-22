@@ -34,12 +34,12 @@ taskformElement.addEventListener('submit', async (e) => {
 
 async function getTasks() {
     const response = await fetch('/api/tasks');
-    const payload = await response.json();
-    console.log(payload);
+    const tasks = await response.json();
+    console.log(tasks);
 
-    if (payload.response.tasks) {
+    if (tasks) {
         document.querySelector("#empty").remove();
-        for (const task of payload.response.tasks) {
+        for (const task of tasks) {
             taskListElement.appendChild(generateTask(task))
         }
     }
